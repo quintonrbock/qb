@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Quinton R. Bock</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link 
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap" 
+            rel="stylesheet"
+        >
+        <style>
+            /*------------------------------------------
+             * Root Variables
+             *------------------------------------------*/
+            :root {
+                --bg-color: #121212;
+                --main-color: #2C2C2C;
+                --text-color: #CFD8DC;
+                --accent-color: #00E676;
+            }
+            /*------------------------------------------
+             * Global Reset
+             *------------------------------------------*/
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: 'JetBrains Mono', monospace;  /* main font */
+                color: var(--text-color);
+            }
+            .navbar {
+                height: 10vh;
+                padding: 0 4vh;
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: var(--main-color);
+            }
+            .nav-left .site-name {
+                font-size: 4vh;
+                font-weight: bold;
+                color: var(--accent-color);
+            }
+            .nav-right {
+                gap: 3vh;
+                display: flex;
+                align-items: center;
+            }
+            .nav-right a {
+                font-size: 2vh;
+                font-weight: bold;
+                text-decoration: none;
+                gap: 1vh;
+                margin: 3vh;
+                display: inline-flex;
+                align-items: center;
+                justify-content: space-between;
+                color: var(--text-color);
+                transition: background 0.3s ease, transform 0.2s ease;
+            }
+            .nav-right a:hover {
+                transform: scale(1.05);
+                color: var(--accent-color); /* Scale up and change text color on hover */
+            }
+            .nav-right a img {
+                height: 2vh;
+                margin-right: 0.5vh;
+                transition: transform 0.2s ease;
+            }
+            .nav-right a:hover img {
+                transform: scale(1.1);      /* Scale up and change icon color on hover */
+                filter: brightness(0) saturate(100%) invert(76%) sepia(74%) saturate(2672%) hue-rotate(95deg) brightness(97%) contrast(94%);
+            }
+            .main-container {
+                height: 90vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--bg-color);
+            }
+            .scroll-wrapper {
+                height: 100%;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+            }
+            .scrollable-content {
+                height: 95%;
+                padding: 6vh;
+                z-index: 1;
+                position: relative;
+                overflow-y: auto;
+                scrollbar-width: thin;
+                scrollbar-color: var(--accent-color) var(--main-color);
+            }
+            .scroll-wrapper::before,
+            .scroll-wrapper::after {
+                content: "";
+                position: absolute;
+                left: 0;
+                right: 0;
+                z-index: 2;
+                pointer-events: none;
+            }
+            .scroll-wrapper::before {
+                top: 0;
+                height: 1vh;
+                background: linear-gradient(to bottom, var(--bg-color), transparent);   /* Gradient overlay */
+            }
+            .scroll-wrapper::after {
+                bottom: 0;
+                height: 10vh;
+                background: linear-gradient(to top, var(--bg-color), transparent);      /* Gradient overlay */
+            }
+            .full-width-section {
+                width: 100%;
+                height: 40vh;
+                margin: 0 0 8vh 0;
+                padding: 5vh;
+                border-radius: 1vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--main-color);
+                box-shadow: 0.5vh 0.5vh 0.2vh var(--accent-color) inset;
+            }
+            .about-content {
+                gap: 5vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .about-image img {
+                height: 30vh;
+                width: 30vh;
+                border-radius: 100%;
+                border: 0.4vh solid var(--text-color);
+            }
+            .about-text {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            .about-text h1 {
+                font-size: 3vh;
+                margin-bottom: 1vh;
+                color: var(--accent-color);
+            }
+            .about-text p {
+                font-size: 2vh;
+                line-height: 3vh;
+                margin-top: 2vh;
+            }
+            .two-column-layout {
+                gap: 8vh;
+                margin-bottom: 4vh;
+                display: flex;
+            }
+            .skills-section {
+                flex: 0.3;
+                padding: 2vh 4vh 4vh 4vh;
+                border-radius: 1vh;
+                background: var(--main-color);
+                box-shadow: 0.5vh 0.5vh 0.2vh var(--accent-color) inset;
+            }
+            .projects-section {
+                flex: 0.7;
+                padding: 2vh 4vh 4vh 4vh;
+                border-radius: 1vh;
+                background: var(--main-color);
+                box-shadow: 0.5vh 0.5vh 0.2vh var(--accent-color) inset;
+            }
+            h2 {
+                font-size: 3vh;
+                margin: 2vh;
+                color: var(--accent-color);
+            }
+            h3 {
+                font-size: 2.5vh;
+                margin-bottom: 1vh;
+                margin-left: 6vh;
+                color: var(--text-color);
+            }
+            h3 a {
+                text-decoration: none;
+                color: inherit;
+            }
+            h3 a:hover {
+                color: var(--accent-color);
+            }
+            ul {
+                margin-left: 8vh;
+                margin-bottom: 3vh;
+                padding-left: 0;
+                list-style: none;
+            }
+            li {
+                margin-bottom: 0.5vh;
+                padding-left: 5vh;
+                position: relative;
+            }
+            /* Custom bullet point */
+            li::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 2vh;
+                height: 0.2vh;
+                width: 2vh;
+                transform: translateY(-50%);
+                background-color: var(--accent-color);
+            }
+            .project p,
+            .project h4,
+            .project tech-stack {
+                margin: 1vh 8vh 1vh 6vh;
+            }
+            .project {
+                margin-bottom: 10vh;
+            }
+            .project img {
+                height: auto;
+                width: 85vh;
+                margin-top: 1vh;
+                margin-left: 10vh;
+                border-radius: 1vh;
+                border: 0.4vh solid var(--text-color);
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="nav-left">
+                <span class="site-name">Quinton R. Bock</span>
+            </div>
+            <div class="nav-right">
+                <a href="Resume_Quinton_Bock_2025.pdf" download>
+                    <img src="resume-logo.png" alt="Resume Logo">
+                    Download My Resume
+                </a>
+                <a href="mailto:quintonrbock@gmail.com?subject=Saw%20your%20site%20and%20had%20to%20reach%20out!">
+                    <img src="mail-logo.png" alt="Mail Logo">
+                    Contact Me
+                </a>
+                <a href="https://github.com/quintonrbock" target="_blank">
+                    <img src="github-logo.png" alt="GitHub Logo">
+                    GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/quinton-bock-321993337" target="_blank">
+                    <img src="linkedin-logo.png" alt="LinkedIn Logo">
+                    LinkedIn
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content Container -->
+        <div class="main-container">
+            <div class="scroll-wrapper">
+                <div class="scrollable-content">
+
+                    <!-- About Me Section -->
+                    <section id="about" class="full-width-section">
+                        <div class="about-content">
+                            <div class="about-image">
+                                <img src="Headshot2.jpg" alt="Headshot of Quinton Bock" />
+                            </div>
+                            <div class="about-text">
+                                <h1>Backend Software Developer</h1>
+                                <p>I’m passionate about building efficient systems and using logic to break down and solve real-world problems.</p>
+                                <p>As captain of my university's cross country and track teams, I developed leadership, discipline, and determination—qualities that shape how I think and work.</p>
+                                <p>Beyond coding, I spend my time solving puzzles, playing chess, juggling, or trying my hand at anything new and interesting, especially if it challenges how I think or what I think is possible.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Two-Column Layout for Skills and Projects -->
+                    <div class="two-column-layout">
+
+                        <!-- Skills Section -->
+                        <section id="skills" class="skills-section">
+                            <h2>Skills</h2>
+                            <h3>Programming Languages</h3>
+                            <ul>
+                                <li>Java</li><li>Python</li><li>C++</li><li>SQL</li><li>JavaScript</li>
+                            </ul>
+                            <h3>Frameworks &amp; Libraries</h3>
+                            <ul>
+                                <li>Spring</li><li>Flask</li><li>Scikit-Learn</li><li>Pandas</li>
+                            </ul>
+                            <h3>Tools &amp; Technology</h3>
+                            <ul>
+                                <li>Git</li><li>Ignition Vision</li><li>Ignition Perspective</li><li>Wonderware</li><li>OPC UA</li>
+                            </ul>
+                            <h3>Other Technical Skills</h3>
+                            <ul>
+                                <li>Algorithms</li><li>Data Structures</li><li>Machine Learning</li><li>AI</li><li>Database Management</li>
+                                <li>Automation Systems</li><li>Embedded Concepts</li><li>HMI/SCADA Development</li>
+                            </ul>
+                            <h3>Life Skills</h3>
+                            <ul>
+                                <li>Leadership</li><li>Problem-Solving</li><li>Adaptability</li><li>Team Collaboration</li><li>Time Management</li>
+                            </ul>
+                        </section>
+
+                        <!-- Projects Section -->
+                        <section id="projects" class="projects-section">
+                            <h2>Projects</h2>
+                            <article class="project">
+                                <h3><a href="#">Insertion Sort Visualizer</a></h3>
+                                <p>A hands-on Java app that brings sorting algorithms to life with animations, color-coded bars, and adjustable speed and size. Built to strengthen my understanding of algorithms, multithreading, and UI design in Java.</p>
+                                <p>It’s interactive, customizable, and designed to make complex logic visual and intuitive.</p>
+                                <h4>Tech Stack:</h4>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>Swing</li>
+                                    <li>AWT</li>
+                                </ul>
+                                <img src="algo-visual-image.jpg" alt="Screenshot (1) of Algorithm Visualizer">
+                                <img src="algo-visual-image-2.jpg" alt="Screenshot (2) of Algorithm Visualizer">
+                            </article>
+                            <article class="project">
+                                <h3><a href="#">Recipe Ingredient Database</a></h3>
+                                <p>Java & SQL-powered tool that shows you every recipe you can make with the ingredients in your kitchen. Tracks expiration dates, units, and generates smart grocery lists.</p>
+                                <p>I built it to simplify meal planning and got to level up my database design, SQL, and Java backend skills in the process.</p>
+                                <h4>Tech Stack:</h4>
+                                <ul>
+                                    <li>Java</li>
+                                    <li>SQL</li>
+                                    <li>Oracle</li>
+                                    <li>JDBC</li>
+                                </ul>
+                                <img src="recipe-db-admin-image.jpg" alt="Screenshot (1) of Recipe Generator">
+                                <img src="recipe-db-user-image.jpg" alt="Screenshot (2) of Recipe Generator">
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
