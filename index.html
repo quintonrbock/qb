@@ -60,12 +60,14 @@
                 gap: 1.5rem;
             }
             .nav-right a {
+                position: relative;
+                padding-left: 1.5rem;
                 font-size: 1rem;
                 font-weight: bold;
                 text-decoration: none;
                 display: inline-flex;
                 align-items: center;
-                transition: background 0.3s ease, transform 0.2s ease;
+                transition: background 0s, transform 0.3s ease;
                 color: var(--text-color);
             }
             .nav-right a:hover {
@@ -73,15 +75,26 @@
                 color: var(--accent-color);
             }
             .nav-right a img {
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
                 height: 1rem;
-                margin-right: 0.5rem;
-                transition: transform 0.2s ease;
             }
-            .nav-right a:hover img {
-                transform: scale(1.1);
-                filter: brightness(0) saturate(100%)
-                    invert(76%) sepia(74%) saturate(2672%) hue-rotate(95deg)
-                    brightness(97%) contrast(94%);
+            .nav-right a img:nth-of-type(1) {
+                opacity: 1;
+            }
+            .nav-right a img:nth-of-type(2) {
+                opacity: 0;
+            }
+            .nav-right a:hover img:nth-of-type(1),
+            .nav-right a:active img:nth-of-type(1) {
+                opacity: 0;
+            }
+            .nav-right a:hover img:nth-of-type(2),
+            .nav-right a:active img:nth-of-type(2) {
+                opacity: 1;
             }
             .main-container {
                 min-height: calc(100vh - 3.5rem);
@@ -304,7 +317,6 @@
                 }
                 .nav-right a img {
                     height: 0.9rem;
-                    margin-right: 0.3rem;
                 }
                 .two-column-layout {
                     flex-direction: row;
@@ -325,7 +337,7 @@
                 li {
                     font-size: 0.95rem;
                 }
-                }
+            }
             @media (min-width: 1025px) {
                 .about-image {
                     display: block;
@@ -364,19 +376,23 @@
             <div class="hamburger-menu" onclick="toggleNav()">&#9776;</div>
             <div class="nav-right">
                 <a href="Resume_Quinton_Bock_2025.pdf" download>
-                    <img src="resume-logo.png" alt="Resume Logo" />
+                    <img src="resume-logo-grey.png" alt="Resume Logo" />
+                    <img src="resume-logo-green.png" alt="Resume Logo - Green" />
                     Download My Resume
                 </a>
                 <a href="mailto:quintonrbock@gmail.com?subject=Saw%20your%20site%20and%20had%20to%20reach%20out!">
-                    <img src="mail-logo.png" alt="Mail Logo" />
+                    <img src="mail-logo-grey.png" alt="Mail Logo" />
+                    <img src="mail-logo-green.png" alt="Mail Logo - Green" />
                     Contact Me
                 </a>
                 <a href="https://github.com/quintonrbock" target="_blank">
-                    <img src="github-logo.png" alt="GitHub Logo" />
+                    <img src="github-logo-grey.png" alt="GitHub Logo" />
+                    <img src="github-logo-green.png" alt="GitHub Logo - Green" />
                     GitHub
                 </a>
                 <a href="https://www.linkedin.com/in/quinton-bock-321993337" target="_blank">
-                    <img src="linkedin-logo.png" alt="LinkedIn Logo" />
+                    <img src="linkedin-logo-grey.png" alt="LinkedIn Logo" />
+                    <img src="linkedin-logo-green.png" alt="LinkedIn Logo - Green" />
                     LinkedIn
                 </a>
             </div>
@@ -541,8 +557,8 @@
         </div>
         <script>
             function toggleNav() {
-            var navLinks = document.querySelector('.nav-right');
-            navLinks.classList.toggle('active');
+                var navLinks = document.querySelector('.nav-right');
+                navLinks.classList.toggle('active');
             }
         </script>
     </body>
