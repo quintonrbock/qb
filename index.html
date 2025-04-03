@@ -11,19 +11,13 @@
             rel="stylesheet"
         />
         <style>
-            /*------------------------------------------
-             * Root Variables
-             *------------------------------------------*/
             :root {
-                --bg-color: #121212;
-                --main-color: #2c2c2c;
-                --text-color: #cfd8dc;
-                --accent-color: #00e676;
+                --bg-color: #121212;        /* Background Color */
+                --section-color: #2c2c2c;   /* Section Color */
+                --text-color: #cfd8dc;      /* Text Color */
+                --accent-color: #00e676;    /* Accent Color */
             }
-            /*------------------------------------------
-             * Global Reset
-             *------------------------------------------*/
-            * {
+            * { /* Global Reset */
                 margin: 0;
                 box-sizing: border-box;
             }
@@ -40,7 +34,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                background: var(--main-color);
+                background: var(--section-color);
                 padding: 0 2rem;
                 height: 3.5rem;
                 position: relative;
@@ -113,7 +107,7 @@
                 position: relative;
                 overflow-y: auto;
                 scrollbar-width: thin;
-                scrollbar-color: var(--accent-color) var(--main-color);
+                scrollbar-color: var(--accent-color) var(--section-color);
             }
             .scroll-wrapper::before,
             .scroll-wrapper::after {
@@ -143,7 +137,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: var(--main-color);
+                background: var(--section-color);
                 box-shadow: 0.125rem 0.125rem 0.0625rem var(--accent-color) inset;
             }
             .about-content {
@@ -182,14 +176,14 @@
                 flex: 0.3;
                 padding: 1rem 2rem;
                 border-radius: 0.5rem;
-                background: var(--main-color);
+                background: var(--section-color);
                 box-shadow: 0.125rem 0.125rem 0.0625rem var(--accent-color) inset;
             }
             .projects-section {
                 flex: 0.7;
                 padding: 1rem 2rem;
                 border-radius: 0.5rem;
-                background: var(--main-color);
+                background: var(--section-color);
                 box-shadow: 0.125rem 0.125rem 0.0625rem var(--accent-color) inset;
             }
             h2 {
@@ -269,7 +263,7 @@
                     position: absolute;
                     top: 3rem;
                     right: 0;
-                    background: var(--main-color);
+                    background: var(--section-color);
                     padding: 1rem;
                     width: 100%;
                 }
